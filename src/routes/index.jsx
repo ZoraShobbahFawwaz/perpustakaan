@@ -1,9 +1,10 @@
 import { createBrowserRouter } from "react-router-dom"
-import { CreateUser } from "../pages/CreateUser"
-import { UserPage } from "../pages/UserPage"
-import { BookPage } from "../pages/BookPage"
-import { AddBook } from "../pages/AddBook"
-import { BorrowingPage } from "../pages/BorrowingPage"
+import { CreateUser } from "../pages/user/CreateUser"
+import { UserPage } from "../pages/user/UserPage"
+import { BookPage } from "../pages/book/BookPage"
+import { AddBook } from "../pages/book/AddBook"
+import { AddBorrowing } from "../pages/borrowing/AddBorrowing"
+import { BorrowingPage } from "../pages/borrowing/BorrowingPage"
 import { BookRentalLandingPage } from "../pages/HomePage"
 import { PengembalianPage } from "../pages/PengembalianPage"
 import { ReportPage } from "../pages/ReportPage"
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
     {
         path: '/borrowing',
         element: <BorrowingPage />
+    },
+    {
+        path: '/borrowing/create',
+        element: <AddBorrowing />
     },
     {
         path: '/',

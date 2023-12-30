@@ -49,6 +49,12 @@ export const getAllborrowing = () => {
             .get(`${url}/borrowing`)
             .then(response => response.data)
             .catch(error => error)
+}            
+export const createBorrowing = (nama, judul_buku, tanggal_peminjaman, tanggal_pengembalian, status) => {
+    return axios
+            .post(`${url}/borrowing/create`, { nama, judul_buku, tanggal_peminjaman, tanggal_pengembalian, status })
+            .then(response => response.data)
+            .catch(error => error)
 }
 export const getAllpengembalian = () => {
     return axios
@@ -56,6 +62,7 @@ export const getAllpengembalian = () => {
             .then(response => response.data)
             .catch(error => error)
 }
+
 export const getAllreport = () => {
     return axios
             .get(`${url}/report`)

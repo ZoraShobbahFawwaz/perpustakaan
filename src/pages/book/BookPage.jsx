@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { getAllborrowing } from "../api";
+import { getAllbooks } from "../../api";
 
-export function BorrowingPage() {
-    const [borrowing, setBorrowing] = useState([]);
+export function BookPage() {
+    const [books, setBooks] = useState([]);
 
     useEffect(() => {
         const getData = async () => {
             try {
-                const data = await getAllborrowing();
-                setBorrowing(data);
+                const data = await getAllbooks();
+                setBooks(data);
                 console.log(data);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -18,7 +18,7 @@ export function BorrowingPage() {
         getData();
     }, []);
 
-    if (!borrowing) return <p>Still loading</p>;
+    if (!books) return <p>Still loading</p>;
 
     return (
         <>
@@ -26,22 +26,22 @@ export function BorrowingPage() {
                 <thead>
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">nama</th>
                         <th scope="col">judul_buku</th>
-                        <th scope="col">tanggal_peminjaman</th>
-                        <th scope="col">tanggal_pengembalian</th>
-                        <th scope="col">status</th>
+                        <th scope="col">pengarang</th>
+                        <th scope="col">penerbit</th>
+                        <th scope="col">tahun_terbit</th>
+                        <th scope="col">stock_buku</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {borrowing.map(({ nama, judul_buku, tanggal_peminjaman, tanggal_pengembalian, status }, index) => (
+                    {books.map(({ judul_buku, pengarang, penerbit, tahun_terbit, stock_buku }, index) => (
                         <tr key={index}>
                             <th scope="row">{index + 1}</th>
-                            <td>{nama}</td>
                             <td>{judul_buku}</td>
-                            <td>{tanggal_peminjaman}</td>
-                            <td>{tanggal_pengembalian}</td>
-                            <td>{status}</td>
+                            <td>{pengarang}</td>
+                            <td>{penerbit}</td>
+                            <td>{tahun_terbit}</td>
+                            <td>{stock_buku}</td>
                         </tr>
                     ))}
                 </tbody>

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { createUser } from "../api"
+import { createUser } from "../../api"
 
 export function CreateUser() {
     const [userid,setUserID] = useState('')

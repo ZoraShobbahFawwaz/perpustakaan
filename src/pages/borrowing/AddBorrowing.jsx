@@ -27,24 +27,28 @@ export function AddBorrowing() {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                    <label htmlFor="judul_buku" className="form-label">
-                        Judul Buku
-                    </label>
-                    <input
-                        type="text"
-                        onChange={(ev) => setJudul_buku(ev.target.value)}
-                        className="form-control"
-                        id="judul_buku"
-                        aria-describedby="judulBukuHelp"
-                        value={judul_buku}
-                    />
+            <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">nama</label>
+                    <input type="text" onChange={ev => setNama(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                 </div>
-                {/* Repeat similar changes for other input fields */}
-                <button type="submit" className="btn btn-primary">
-                    Submit
-                </button>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">judul_buku</label>
+                    <input type="text" onChange={ev => setJudul_buku(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">tanggal_peminjaman</label>
+                    <input type="text" onChange={ev => setTanggal_peminjaman(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">tanggal_pengembalian</label>
+                    <input type="text" onChange={ev => setTanggal_pengembalian(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">status</label>
+                    <input type="password" onChange={ev => setStatus(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </>
-    );
+    )
 }

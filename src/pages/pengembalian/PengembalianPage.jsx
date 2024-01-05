@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getAllpengembalian } from "../api";
+import { getAllpengembalian } from "../../api";
 
 export function PengembalianPage() {
     const [pengembalian, setPengembalian] = useState([]);

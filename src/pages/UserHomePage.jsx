@@ -1,11 +1,11 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink } from "react-router-dom";
-import perpus from "../asset/perpus.jpg";
+import userhomepage from "../asset/userhomepage.jpg";
 
-export const BookRentalLandingPage = () => {
+export const UserHomePage = () => {
   const fullBackgroundStyle = {
-    backgroundImage: `url(${perpus})`, // Replace with the path to your background image
+    backgroundImage: `url(${userhomepage})`, // Replace with the path to your background image
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     height: '100vh', // Set the height to 100% of the viewport height

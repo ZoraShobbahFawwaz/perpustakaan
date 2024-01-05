@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getAllreport } from "../api";
+import { getAllreport } from "../../api";
 
 export function ReportPage() {
     const [report, setReport] = useState([])

@@ -13,12 +13,19 @@ import { UpdateBook } from "../pages/book/UpdateBook"
 import { LoginForm } from "../pages/Login"
 import { UserHomePage } from "../pages/UserHomePage"
 import { CreatePengembalian } from "../pages/pengembalian/CreatePengembalian"
+import { CreateAdmin } from "../pages/admin/CreateAdmin"
+import { AdminPage } from "../pages/admin/AdminPage"
 
 export const router = createBrowserRouter([
     //Homepage
     {
         path: '/userhomepage',
         element: < UserHomePage/>
+    },
+    //admin
+    {
+        path: '/admin',
+        element: <AdminPage />
     },
     {
         path: '/create/user',
@@ -72,8 +79,8 @@ export const router = createBrowserRouter([
         path: '/pengembalian/create',
         element: <CreatePengembalian />
     },
-    // {
-    //     path: '/admin/create',
-    //     element: <CreateAdmin />
-    // },
+    {
+         path: '/admin/create',
+         element: <CreateAdmin />
+    },
 ])

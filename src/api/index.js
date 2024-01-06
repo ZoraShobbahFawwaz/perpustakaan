@@ -42,6 +42,14 @@ export const createUser = (userID, jenis_kelamin, nama, nim, username, password,
         .then(response => response.data)
         .catch(error => error)
 }
+//delete user
+export const deleteUser = (idUser) => {
+    return axios
+        .delete(`${url}/user/${idUser}`)
+        .then(response => console.log(response))
+        .catch(err => console.log(err))
+
+}
 
 //buku
 export const getAllbooks = () => {
@@ -57,13 +65,6 @@ export const createBook = (judul_buku, pengarang, penerbit, tahun_terbit, stock_
         .then(response => response.data)
         .catch(error => error)
 }
-// delete buku
-export const deleteBuku = (idBuku) => {
-    return axios
-        .delete(`${url}/books/${idBuku}`)
-        .then(response => console.log(response))
-        .catch(err => console.log(err))
-}
 
 export const updateBook = (idBuku) => {
     return axios
@@ -71,6 +72,13 @@ export const updateBook = (idBuku) => {
         .then(response => console.log(response))
         .catch(err => console.log(err))
 }
+export const deleteBuku = (idBuku) => {
+    return axios
+        .delete(`${url}/books/${idBuku}`)
+        .then(response => console.log(response))
+        .catch(err => console.log(err))
+}
+
 
 export const getAllborrowing = () => {
     return axios

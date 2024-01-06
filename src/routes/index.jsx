@@ -15,6 +15,7 @@ import { UserHomePage } from "../pages/UserHomePage"
 import { CreatePengembalian } from "../pages/pengembalian/CreatePengembalian"
 import { CreateAdmin } from "../pages/admin/CreateAdmin"
 import { AdminPage } from "../pages/admin/AdminPage"
+import { AdminHomePage } from "../pages/AdminHomePage"
 
 export const router = createBrowserRouter([
     //Homepage
@@ -27,6 +28,7 @@ export const router = createBrowserRouter([
         path: '/admin',
         element: <AdminPage />
     },
+    //user
     {
         path: '/create/user',
         element: <CreateUser />
@@ -39,6 +41,7 @@ export const router = createBrowserRouter([
         path: '/user',
         element: <UserPage />
     },
+    //book
     {
         path: '/book',
         element: <BookPage />
@@ -47,6 +50,7 @@ export const router = createBrowserRouter([
         path: '/addbook',
         element: <AddBook />
     },
+    //borrowing
     {
         path: '/borrowing',
         element: <BorrowingPage />
@@ -59,10 +63,12 @@ export const router = createBrowserRouter([
         path: '/',
         element: <BookRentalLandingPage />
     },
+    //pengembalian
     {
         path: '/pengembalian',
         element: <PengembalianPage />
     },
+    //report
     {
         path: '/report',
         element: <ReportPage />
@@ -82,5 +88,9 @@ export const router = createBrowserRouter([
     {
          path: '/admin/create',
          element: <CreateAdmin />
+    },
+    {
+        path: '/adminhomepage',
+        element: <AdminHomePage />
     },
 ])

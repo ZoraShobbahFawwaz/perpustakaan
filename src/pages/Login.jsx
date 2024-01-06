@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { login } from '../api';
 import { LoadingComp } from './LoadingComp';
+import tampilan from "../asset/tampilan.jpg"
 
 export const LoginForm = () => {
   // State to manage form input values
@@ -23,7 +24,18 @@ export const LoginForm = () => {
 
   if(loading) return <LoadingComp />
 
+  const fullBackgroundStyle = {
+    backgroundImage: `url(${tampilan})`, // Replace with the path to your background image
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    height: '100vh', // Set the height to 100% of the viewport height
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+}
+
   return (
+    <div className="" style={fullBackgroundStyle}>
     <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
@@ -63,6 +75,7 @@ export const LoginForm = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

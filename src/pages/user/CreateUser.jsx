@@ -5,7 +5,6 @@ import daftar from "../../asset/daftar.jpg"
 
 export function CreateUser() {
 
-    const [userid, setUserID] = useState('')
     const [nama, setNama] = useState('')
     const [nim, setNim] = useState('')
     const [username, setUsername] = useState('')
@@ -16,7 +15,8 @@ export function CreateUser() {
 
     const handleSubmit = async (ev) => {
         ev.preventDefault()
-        const hasil = await createUser(userid, nama, nim, username, password, email, noHp, jenis_kelamin)
+        // console.log("password", password)
+        const hasil = await createUser(nama, nim, username, password, jenis_kelamin, email, noHp, )
         console.log(hasil)
     }
 
@@ -39,35 +39,31 @@ export function CreateUser() {
                             <div className="card-body">
                                 <form onSubmit={handleSubmit}>
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">userid</label>
-                                        <input type="text" onChange={ev => setUserID(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">username</label>
+                                        <label for="exampleInputEmail1" class="form-label">Username</label>
                                         <input type="text" onChange={ev => setUsername(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">nama</label>
+                                        <label for="exampleInputEmail1" class="form-label">Nama</label>
                                         <input type="text" onChange={ev => setNama(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">nim</label>
+                                        <label for="exampleInputEmail1" class="form-label">NIM</label>
                                         <input type="text" onChange={ev => setNim(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">password</label>
+                                        <label for="exampleInputEmail1" class="form-label">Password</label>
                                         <input type="password" onChange={ev => setPassword(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">email</label>
+                                        <label for="exampleInputEmail1" class="form-label">Email</label>
                                         <input onChange={ev => setEmail(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">jenis_kelamin</label>
+                                        <label for="exampleInputEmail1" class="form-label">Jenis_kelamin</label>
                                         <input onChange={ev => setJenis_kelamin(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">no hp</label>
+                                        <label for="exampleInputEmail1" class="form-label">No HP</label>
                                         <input onChange={ev => setNoHp(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>

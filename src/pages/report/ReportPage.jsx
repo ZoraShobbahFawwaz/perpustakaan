@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllreport } from "../../api";
+import { NavLink } from "react-router-dom";
 
 export function ReportPage() {
     const [report, setReport] = useState([])
@@ -17,7 +18,11 @@ export function ReportPage() {
     if (!report) return <p>masih loading</p>
 
     return (
-        <>
+        <header>
+            <NavLink to={"/create/user"}>
+                <button type="Submit" className="btn btn-dark">Tambahkan</button>
+            </NavLink>
+
             <table class="table">
                 <thead>
                     <tr>
@@ -39,6 +44,6 @@ export function ReportPage() {
                     }
                 </tbody>
             </table>
-        </>
+        </header>
     )
 }

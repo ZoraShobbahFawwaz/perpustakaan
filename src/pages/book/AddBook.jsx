@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"
 import { createBook } from "../../api";
 import "bootstrap/dist/css/bootstrap.min.css"
 import daftar from "../../asset/daftar.jpg"
@@ -9,6 +10,7 @@ export function AddBook() {
     const [penerbit, setPenerbit] = useState("");
     const [tahun_terbit, setTahun_terbit] = useState("");
     const [stock_buku, setStock_buku] = useState("");
+    const navigate = useNavigate()
 
     const handleSubmit = async (ev) => {
         ev.preventDefault();
@@ -24,6 +26,8 @@ export function AddBook() {
         setPenerbit("");
         setTahun_terbit("");
         setStock_buku("");
+
+        navigate('/book')
     };
 
     const fullBackgroundStyle = {
@@ -74,3 +78,4 @@ export function AddBook() {
         </div>
     )
 }
+

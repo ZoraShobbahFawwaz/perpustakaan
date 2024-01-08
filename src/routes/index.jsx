@@ -16,8 +16,17 @@ import { CreatePengembalian } from "../pages/pengembalian/CreatePengembalian"
 import { CreateAdmin } from "../pages/admin/CreateAdmin"
 import { AdminPage } from "../pages/admin/AdminPage"
 import { AdminHomePage } from "../pages/AdminHomePage"
+import { BookUser } from "../pages/book/BookUser"
+import { UpdateUser} from "../pages/user/UpdateUser"
+import { UpdateAdmin } from "../pages/admin/UpdateAdmin"
+
 
 export const router = createBrowserRouter([
+    //tampilan awal
+    {
+        path: '/',
+        element: <BookRentalLandingPage />
+    },
     //Homepage
     {
         path: '/userhomepage',
@@ -27,6 +36,10 @@ export const router = createBrowserRouter([
     {
         path: '/admin',
         element: <AdminPage />
+    },
+    {
+        path: '/admin/update/:adminID',
+        element: <UpdateAdmin />
     },
     //user
     {
@@ -41,7 +54,20 @@ export const router = createBrowserRouter([
         path: '/user',
         element: <UserPage />
     },
+    //updte user
+    {
+        path: '/user/update/:userID',
+        element: <UpdateUser />
+    },
     //book
+    {
+        path: '/book/update/:bookID',
+        element: <UpdateBook />
+    },
+    {
+        path: '/bookuser',
+        element: <BookUser />
+    },
     {
         path: '/book',
         element: <BookPage />
@@ -59,10 +85,7 @@ export const router = createBrowserRouter([
         path: '/borrowing/create',
         element: <AddBorrowing />
     },
-    {
-        path: '/',
-        element: <BookRentalLandingPage />
-    },
+   
     //pengembalian
     {
         path: '/pengembalian',

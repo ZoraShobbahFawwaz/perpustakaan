@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { login } from '../api';
 import { LoadingComp } from './LoadingComp';
-import tampilan from "../asset/tampilan.jpg"
+import ara from "../asset/ara.jpg"
 
 export const LoginForm = () => {
   // State to manage form input values
@@ -18,14 +18,17 @@ export const LoginForm = () => {
     e.preventDefault();
     const result = await login(username,password)
 
-    if(result.access_token) navigate('/')
+    if(result.access_token) {
+      localStorage.setItem('token', result.access_token)
+      navigate('/')
+    }
     
   };
 
   if(loading) return <LoadingComp />
 
   const fullBackgroundStyle = {
-    backgroundImage: `url(${tampilan})`, // Replace with the path to your background image
+    backgroundImage: `url(${ara})`, // Replace with the path to your background image
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     height: '100vh', // Set the height to 100% of the viewport height

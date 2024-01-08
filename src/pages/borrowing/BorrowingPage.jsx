@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllborrowing } from "../../api";
+import { NavLink } from "react-router-dom";
 
 export function BorrowingPage() {
     const [borrowing, setBorrowing] = useState([]);
@@ -21,7 +22,11 @@ export function BorrowingPage() {
     if (!borrowing) return <p>Still loading</p>;
 
     return (
+        
         <>
+        <NavLink to={"/create/borrowing"}>
+                <button type="Submit" className="btn btn-dark">Tambahkan</button>
+            </NavLink>
             <table className="table">
                 <thead>
                     <tr>

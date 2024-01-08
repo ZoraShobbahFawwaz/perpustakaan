@@ -34,11 +34,9 @@ export function AdminPage() {
                 <thead>
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">adminid</th>
                         <th scope="col">nama</th>
                         <th scope="col">username</th>
                         <th scope="col">np</th>
-                        <th scope="col">password</th>
                         <th scope="col">no_hp</th>
                         <th scope="col">action</th>
                     </tr>
@@ -47,11 +45,9 @@ export function AdminPage() {
                     {admin.map(({ adminID, nama, username, np, password, no_hp }, index) => (
                         <tr key={index}>
                             <th scope="row">{index + 1}</th>
-                            <td>{adminID}</td>
                             <td>{nama}</td>
                             <td>{username}</td>
                             <td>{np}</td>
-                            <td>{password}</td>
                             <td>{no_hp}</td>
                             <td><form onSubmit={() => deleteAdminAdmin(adminID)} ><button type="submit" class="btn btn-danger">Delete</button></form></td>
                             <td><NavLink to={"/updateadmin"}>

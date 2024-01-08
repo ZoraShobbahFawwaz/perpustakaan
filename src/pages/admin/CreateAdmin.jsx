@@ -5,7 +5,6 @@ import daftar from "../../asset/daftar.jpg"
 
 export function CreateAdmin() {
 
-    const [adminid, setAdminID] = useState('')
     const [nama, setNama] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -14,7 +13,7 @@ export function CreateAdmin() {
 
     const handleSubmit = async (ev) => {
         ev.preventDefault()
-        const hasil = await createAdmin(adminid, nama, username, password, np, noHp,)
+        const hasil = await createAdmin( nama, username, password, np, noHp,)
         console.log(hasil)
     }
 
@@ -36,10 +35,6 @@ export function CreateAdmin() {
                         <div className="card">
                             <div className="card-body">
                                 <form onSubmit={handleSubmit}>
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">adminid</label>
-                                        <input type="text" onChange={ev => setAdminID(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                    </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">username</label>
                                         <input type="text" onChange={ev => setUsername(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />

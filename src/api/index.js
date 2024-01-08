@@ -2,31 +2,46 @@ import axios from "axios"
 
 const url = "http://localhost:3001"
 
-
 export const login = (username, password) => {
     return axios
         .post(`${url}/auth/login`, { username, password })
         .then(response => response.data)
         .catch(error => error)
 }
-//admin
-export const createAdmin = (userID, jenis_kelamin, nama, nim, username, password, email, no_hp) => {
+//buat admin
+export const createAdmin = (  nama, username, password, np, no_hp,role) => {
     return axios
-        .post(`${url}/admin/create`, { userID, nama, nim, username, password, jenis_kelamin, email, no_hp })
+        .post(`${url}/admin/create`, { nama, username, password,np, no_hp,role })
         .catch(error => error)
         .then(response => response.data)
 }
+
+//admin
 export const getAlladmin = () => {
     return axios
         .get(`${url}/admin`)
         .then(response => response.data)
         .catch(error => error)
 }
-        export const deleteAdmin = (idBuku) => {
-            return axios
-                .delete(`${url}/admin/${idBuku}`)
-                .then(response => console.log(response))
-                .catch(err => console.log(err))
+export const updateAdmin = (adminID, nama, username, password, np, no_hp) => {
+    return axios
+        .patch(`${url}/user/${adminID}`, { adminID, nama, username, password, np, no_hp })
+        .then(response => response.data)
+        .catch(error => error)
+}
+export const getOneByAdminId = (adminID) => {
+    return axios
+        .get(`${url}/admin/${adminID}`)
+        .then(reponse => reponse.data)
+        .catch(error => error)
+}
+
+//delete admin
+export const deleteAdmin = (idBuku) => {
+    return axios
+        .delete(`${url}/admin/${idBuku}`)
+        .then(response => console.log(response))
+        .catch(err => console.log(err))
 }
 //user
 export const getAllUser = () => {
@@ -35,13 +50,29 @@ export const getAllUser = () => {
         .then(response => response.data)
         .catch(error => error)
 }
-
-export const createUser = (userID, jenis_kelamin, nama, nim, username, password, email, no_hp) => {
+export const getOneById = (userID) => {
     return axios
-        .post(`${url}/user/create`, { userID, nama, nim, username, password, jenis_kelamin, email, no_hp })
+        .get(`${url}/user/${userID}`)
+        .then(reponse => reponse.data)
+        .catch(error => error)
+}
+
+//buat user
+export const createUser = (nama, nim, username, password, jenis_kelamin, email, no_hp) => {
+    return axios
+        .post(`${url}/user/create`, { nama, nim, username, password, jenis_kelamin, email, no_hp })
         .then(response => response.data)
         .catch(error => error)
 }
+
+//update user
+export const updateUser = (userID, nama, nim, username, password, jenis_kelamin, email, no_hp) => {
+    return axios
+        .patch(`${url}/user/${userID}`, { nama, nim, username, password, jenis_kelamin, email, no_hp })
+        .then(response => response.data)
+        .catch(error => error)
+}
+
 //delete user
 export const deleteUser = (idUser) => {
     return axios
@@ -52,10 +83,23 @@ export const deleteUser = (idUser) => {
 }
 
 //buku
+export const getAllbookuser = () => {
+    return axios
+        .get(`${url}/books`)
+        .then(response => response.data)
+        .catch(error => error)
+}
 export const getAllbooks = () => {
     return axios
         .get(`${url}/books`)
         .then(response => response.data)
+        .catch(error => error)
+}
+//updte buku
+export const getOneByBookId = (bookID) => {
+    return axios
+        .get(`${url}/books/${bookID}`)
+        .then(reponse => reponse.data)
         .catch(error => error)
 }
 //tambah buku
@@ -79,10 +123,10 @@ export const deleteBuku = (idBuku) => {
         .catch(err => console.log(err))
 }
 
-
+//borrowing
 export const getAllborrowing = () => {
     return axios
-        .get(`${url}/borrowing`)
+        .get(`${url}/borrowing_book`)
         .then(response => response.data)
         .catch(error => error)
 }

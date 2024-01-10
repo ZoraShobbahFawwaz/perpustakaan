@@ -5,6 +5,8 @@ import { NavLink } from "react-router-dom";
 export function BookPage() {
     const [books, setBooks] = useState([]);
 
+    const [role, setRole] = useState("");
+
     const deleteBukuBuku = async (id) => {
         await deleteBuku(id)
     }
@@ -18,22 +20,32 @@ export function BookPage() {
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
+        const pipop = async () => {
+                const hasil = await  localStorage.getItem("role")
+            setRole(hasil)
+            }
+            pipop()
         };
 
         getData();
     }, []);
 
     if (!books) return <p>Still loading</p>;
-
+    if (role!="admin")return   <h1>bukan admin</h1>
     return (
             <header>
+                <nav className="navbar" style={{backgroundColor: "#e3f2fd"}}>
+
+                
 
                 <NavLink to={"/addbook"}>
-                    <button type="Submit" className="btn btn-dark">Tambahkan</button>
+                    <button type="Submit" className="btn btn-warning">Tambahkan</button>
                 </NavLink>
-                <NavLink to={"/"}>
-                    <button type="Submit" className="btn btn-dark">LogOut</button>
+                <NavLink to={"/adminhomepage"}>
+                    <button type="Submit" className="btn btn-success">Home</button>
                 </NavLink>
+</nav>
+
 
                 <table className="table" >
                     <thead>
@@ -59,7 +71,7 @@ export function BookPage() {
                                 <td className="table-light">{tahun_terbit}</td>
                                 <td className="table-light">{stock_buku}</td>
                                 <td><form onSubmit={() => deleteBukuBuku(bookID)} ><button type="submit" class="btn btn-danger">Delete</button></form></td>
-                                <td><NavLink to={"/book/update/id"}>
+                                <td><NavLink to={`/book/update/${bookID}`}>
                                     <button type="submit" className="btn btn-dark">Update</button>
                                 </NavLink>
                                 </td>

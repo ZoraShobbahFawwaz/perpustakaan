@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate} from "react-router-dom"
 import { createAdmin } from "../../api"
 import "bootstrap/dist/css/bootstrap.min.css"
 import daftar from "../../asset/daftar.jpg"
@@ -10,12 +11,22 @@ export function CreateAdmin() {
     const [password, setPassword] = useState('')
     const [np, setNp] = useState('')
     const [no_hp, setNo_hp] = useState('')
+    const navigate = useNavigate()
 
     const handleSubmit = async (ev) => {
         ev.preventDefault()
         const hasil = await createAdmin( nama, username, password, np, no_hp,)
         console.log(hasil)
-    }
+    
+
+    setNama("");
+    setUsername("");
+    setPassword("");
+    setNp("");
+    setNo_hp("");
+
+    navigate('/admin')
+};
 
     const fullBackgroundStyle = {
         backgroundImage: `url(${daftar})`, // Replace with the path to your background image

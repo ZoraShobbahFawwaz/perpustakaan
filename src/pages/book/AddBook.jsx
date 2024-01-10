@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { createBook } from "../../api";
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -10,7 +10,18 @@ export function AddBook() {
     const [penerbit, setPenerbit] = useState("");
     const [tahun_terbit, setTahun_terbit] = useState("");
     const [stock_buku, setStock_buku] = useState("");
+    const [role, setRole] = useState("");
     const navigate = useNavigate()
+
+    useEffect(() => {
+        const pipop = async () => {
+            const hasil = await  localStorage.getItem("role")
+        setRole(hasil)
+        }
+        pipop()
+
+
+    }, [])
 
     const handleSubmit = async (ev) => {
         ev.preventDefault();
@@ -39,7 +50,7 @@ export function AddBook() {
         justifyContent: 'center',
         alignItems: 'center',
     }
-
+if (role!="admin")return   <h1>bukan admin</h1>
     return (
         <div className="" style={fullBackgroundStyle}>
             <div className="container mt-5">

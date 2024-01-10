@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect,useState } from "react";
 import { createPengembalian } from "../../api";
 import "bootstrap/dist/css/bootstrap.min.css"
 import daftar from "../../asset/daftar.jpg"
+import { useNavigate } from "react-router-dom"
 
 export function CreatePengembalian() {
     const [nama, setNama] = useState("");
@@ -10,6 +11,16 @@ export function CreatePengembalian() {
     const [tanggal_pengembalian, setTanggal_pengembalian] = useState("");
     const [status, setStatus] = useState("");
     const [denda, setDenda] = useState("")
+    const [role, setRole] = useState("");
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        const pipop = async () => {
+            const hasil = await  localStorage.getItem("role")
+        setRole(hasil)
+        }
+        pipop()
+    },[])
 
     const handleSubmit = async (ev) => {
         ev.preventDefault();
@@ -26,6 +37,8 @@ export function CreatePengembalian() {
         setTanggal_pengembalian("");
         setStatus("");
         setDenda("");
+
+        navigate('/pengembalian')
     };
 
     const fullBackgroundStyle = {
@@ -37,6 +50,9 @@ export function CreatePengembalian() {
         justifyContent: 'center',
         alignItems: 'center',
     }
+
+    if (role!="admin")return   <h1>bukan admin</h1>
+    
         return(
         
         <div className="" style={fullBackgroundStyle}>

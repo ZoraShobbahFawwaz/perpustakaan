@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect,useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { createReport } from "../../api";
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -8,14 +8,23 @@ export function CreateReport() {
     const [bulan, setBulan] = useState("");
     const [buku_terlaris, setBuku_terlaris] = useState("");
     const [total_denda, setTotal_denda] = useState("");
+    const [role, setRole] = useState("");
     const navigate = useNavigate()
+
+    useEffect(() => {
+        const pipop = async () => {
+            const hasil = await  localStorage.getItem("role")
+        setRole(hasil)
+        }
+        pipop()
+    }, [])
 
     const handleSubmit = async (ev) => {
         ev.preventDefault();
 
         // Add validation logic here if needed
 
-        const hasil = await createReport( bulan, buku_terlaris, total_denda);
+        const hasil = await createReport(bulan, buku_terlaris, total_denda);
         console.log(hasil);
 
         // Optionally, you can reset the form fields after submission
@@ -36,7 +45,7 @@ export function CreateReport() {
         justifyContent: 'center',
         alignItems: 'center',
     };
-
+    if (role!="admin")return   <h1>bukan admin</h1>
     return (
         <div className="" style={fullBackgroundStyle}>
             <div className="container mt-5">
@@ -45,21 +54,19 @@ export function CreateReport() {
                         <div className="card">
                             <div className="card-body">
                                 <form onSubmit={handleSubmit}>
-                                    <form onSubmit={handleSubmit}>
-                                        <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Bulan</label>
-                                            <input type="text" onChange={ev => setBulan(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Buku Terlaris</label>
-                                            <input type="text" onChange={ev => setBuku_terlaris(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Denda Terkumpul</label>
-                                            <input type="text" onChange={ev => setTotal_denda(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </form>
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Bulan</label>
+                                        <input type="text" onChange={ev => setBulan(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Buku Terlaris</label>
+                                        <input type="text" onChange={ev => setBuku_terlaris(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Denda Terkumpul</label>
+                                        <input type="text" onChange={ev => setTotal_denda(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
                             </div>
                         </div>

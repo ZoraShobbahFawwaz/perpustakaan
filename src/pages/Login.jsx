@@ -14,15 +14,18 @@ export const LoginForm = () => {
 
   // Function to handle form submission
   const handleLogin = async (e) => {
-    setLoading(true)
     e.preventDefault();
     const result = await login(username,password)
 
     if(result.access_token) {
       localStorage.setItem('token', result.access_token)
-      navigate('/')
+      localStorage.setItem('username', result.username)
+      localStorage.setItem("role",result.role)
     }
+
+    if(result.role === "user") navigate('/userhomepage')
     
+    if(result.role === "admin") navigate('/adminhomepage')
   };
 
   if(loading) return <LoadingComp />

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { createUser } from "../../api"
+import { useNavigate} from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
 import daftar from "../../asset/daftar.jpg"
 
@@ -12,12 +13,23 @@ export function CreateUser() {
     const [email, setEmail] = useState('')
     const [noHp, setNoHp] = useState('')
     const [jenis_kelamin, setJenis_kelamin] = useState('')
+    const navigate = useNavigate()
 
     const handleSubmit = async (ev) => {
         ev.preventDefault()
         // console.log("password", password)
         const hasil = await createUser(nama, nim, username, password, jenis_kelamin, email, noHp, )
         console.log(hasil)
+
+        setNama("");
+        setNim("");
+        setUsername("");
+        setPassword("");
+        setEmail("");
+        setNoHp("");
+        setJenis_kelamin("");
+
+        navigate('/')
     }
 
     const fullBackgroundStyle = {

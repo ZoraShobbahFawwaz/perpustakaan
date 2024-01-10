@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { useNavigate} from "react-router-dom"
 import { getOneById, updateUser } from "../../api"
 import "bootstrap/dist/css/bootstrap.min.css"
 import daftar from "../../asset/daftar.jpg"
@@ -13,6 +14,8 @@ export function UpdateUser() {
     const [email, setEmail] = useState('')
     const [noHp, setNoHp] = useState('')
     const [jenis_kelamin, setJenis_kelamin] = useState('')
+    const [role, setRole] = useState("");
+    const navigate = useNavigate()
 
     useEffect(() => {
         const dapetData = async () => {
@@ -27,6 +30,13 @@ export function UpdateUser() {
             console.log(data)
         }
         dapetData()
+
+        
+        const pipop = async () => {
+            const hasil = await  localStorage.getItem("role")
+        setRole(hasil)
+        }
+        pipop()
     }, [])
 
     const handleSubmit = async (ev) => {
@@ -34,6 +44,7 @@ export function UpdateUser() {
         // console.log("password", password)
         const hasil = await updateUser(userID, nama, nim, username, password, jenis_kelamin, email, noHp)
         console.log(hasil)
+        navigate('/user')
     }
 
     const fullBackgroundStyle = {
@@ -46,6 +57,7 @@ export function UpdateUser() {
         alignItems: 'center',
         // You can add more styles as needed
     }
+    if (role!="admin")return   <h1>bukan admin</h1>
     return (
         <div className="" style={fullBackgroundStyle}>
             <div className="container mt-5">

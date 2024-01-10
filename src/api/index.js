@@ -160,7 +160,7 @@ export const getOneByIDpeminjaman = (ID_peminjaman) => {
 
 export const getAllpengembalian = () => {
     return axios
-        .get(`${url}/pengembalian`)
+        .get(`${url}/pengembalian/`)
         .then(response => response.data)
         .catch(error => error)
 }
@@ -170,22 +170,23 @@ export const createPengembalian = (nama, judul_buku, tanggal_peminjaman, tanggal
         .then(response => response.data)
         .catch(error => error)
 }
-export const deletePengembalian = (ID_Pengembalian) => {
-    return axios
-        .delete(`${url}/pengembalian/${ID_Pengembalian}`)
-        .then(response => console.log(response))
-        .catch(err => console.log(err))
+    export const deletePengembalian = (idPengembalian) => {
+        console.log(idPengembalian)
+        return axios
+          .delete(`${url}/pengembalian/${idPengembalian}`)
+          .then(response => console.log(response))
+          .catch(error => console.log(error))
 }
-export const getOneByIDpengembalian = (ID_pengembalian) => {
+export const getOneByIDpengembalian = (pengembalianID) => {
     return axios
-        .get(`${url}/pengembalian/${ID_pengembalian}`)
+        .get(`${url}/pengembalian/${pengembalianID}`)
         .then(reponse => reponse.data)
         .catch(error => error)
 }
 
-export const updatePengembalian = (ID_Pengembalian, nama, judul_buku, tanggal_peminjaman, tanggal_pengembalian, status, denda) => {
+export const updatePengembalian = (pengembalianID , nama, judul_buku, tanggal_peminjaman, tanggal_pengembalian, status, denda) => {
     return axios
-        .patch(`${url}/pengembalian/${ID_Pengembalian}`, { nama, judul_buku, tanggal_peminjaman, tanggal_pengembalian, status, denda })
+        .patch(`${url}/pengembalian/${pengembalianID}`, { nama, judul_buku, tanggal_peminjaman, tanggal_pengembalian, status, denda })
         .then(response => response.data)
         .catch(error => error)
 }

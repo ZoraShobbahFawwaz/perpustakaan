@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
+import { useNavigate} from "react-router-dom"
 import { getOneByBookId,updateBook } from "../../api";
 import "bootstrap/dist/css/bootstrap.min.css"
 
@@ -10,6 +11,8 @@ export function UpdateBook() {
     const [penerbit, setPenerbit] = useState("");
     const [tahun_terbit, setTahun_terbit] = useState("");
     const [stock_buku, setStock_buku] = useState("");
+    const [role, setRole] = useState("");
+    const navigate = useNavigate()
 
     useEffect(() => {
         const dapetData = async () => {
@@ -22,6 +25,12 @@ export function UpdateBook() {
             console.log(data)
         }
         dapetData()
+
+        const pipop = async () => {
+            const hasil = await  localStorage.getItem("role")
+        setRole(hasil)
+        }
+        pipop()
     }, [])
 
     const handleSubmit = async (ev) => {
@@ -31,14 +40,11 @@ export function UpdateBook() {
 
         const hasil = await updateBook(bookID, judul_buku, pengarang, penerbit, tahun_terbit, stock_buku);
         console.log(hasil);
+        navigate('/book')
 
-        // Optionally, you can reset the form fields after submission
-        // setJudul_buku("");
-        // setPengarang("");
-        // setPenerbit("");
-        // setTahun_terbit("");
-        // setStock_buku("");
     };
+
+    if (role!="admin")return   <h1>bukan admin</h1>
 
     return (
         <>

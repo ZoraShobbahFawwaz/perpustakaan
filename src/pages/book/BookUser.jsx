@@ -25,9 +25,6 @@ export function BookUser() {
 
     return (
         <header>
-            <NavLink to={"/addbook"}>
-                   <button type="Submit" className="btn btn-dark">Tambahkan</button>
-            </NavLink>
             <NavLink to={"/userhomepage"}>
                    <button type="Submit" className="btn btn-dark">Home</button>
             </NavLink>
@@ -52,7 +49,7 @@ export function BookUser() {
                             <td>{penerbit}</td>
                             <td>{tahun_terbit}</td>
                             <td>{stock_buku}</td>
-                            <td><NavLink to={"/borrowing/create"}>
+                            <td><NavLink to={`/borrowing/create/${bookID}`}>
                                 <button type="submit" className="btn btn-warning">Pinjamm</button>
                                 </NavLink>
                             </td>

@@ -2,13 +2,15 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { getOneByreportID,updateReport } from "../../api";
 import "bootstrap/dist/css/bootstrap.min.css"
+import { useNavigate} from "react-router-dom"
 
 export function UpdateReport() {
     const { reportID } = useParams()
     const [ bulan, setBulan] = useState("");
     const [ buku_terlaris, setBuku_terlaris] = useState("");
     const [ total_denda, setTotal_denda] = useState("");
-    
+    const [role, setRole] = useState("");
+    const navigate = useNavigate()
 
     useEffect(() => {
         const dapetData = async () => {
@@ -19,6 +21,11 @@ export function UpdateReport() {
             console.log(data)
         }
         dapetData()
+        const pipop = async () => {
+            const hasil = await  localStorage.getItem("role")
+        setRole(hasil)
+        }
+        pipop()
     }, [])
 
     const handleSubmit = async (ev) => {
@@ -28,6 +35,7 @@ export function UpdateReport() {
 
         const hasil = await updateReport(reportID,bulan, buku_terlaris, total_denda);
         console.log(hasil);
+        navigate('/report')
 
         // Optionally, you can reset the form fields after submission
         // setJudul_buku("");
@@ -36,7 +44,7 @@ export function UpdateReport() {
         // setTahun_terbit("");
         // setStock_buku("");
     };
-
+    if (role!="admin")return   <h1>bukan admin</h1>
     return (
         <>
             <form onSubmit={handleSubmit}>

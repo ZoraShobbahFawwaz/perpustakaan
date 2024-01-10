@@ -91,7 +91,7 @@ export const router = createBrowserRouter([
         element: <BorrowingPage />
     },
     {
-        path: '/borrowing/create',
+        path: '/borrowing/create/:bookID',
         element: <AddBorrowing />
     },
     {
@@ -105,7 +105,7 @@ export const router = createBrowserRouter([
         element: <PengembalianPage />
     },
     {
-        path: '/pengembalian/update/:ID_pengembalian',
+        path: '/pengembalian/update/:pengembalianID',
         element: <UpdatePengembalian />
     },
     {

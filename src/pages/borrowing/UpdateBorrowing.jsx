@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { getOneByIDpeminjaman, updateBorrowing } from "../../api";
-
+import { useNavigate} from "react-router-dom"
 
 export function UpdateBorrowing() {
     const { ID_peminjaman } = useParams()
@@ -10,6 +10,8 @@ export function UpdateBorrowing() {
     const [tanggal_peminjaman, setTanggal_peminjaman] = useState("");
     const [tanggal_pengembalian, setTanggal_pengembalian] = useState("");
     const [status, setStatus] = useState("");
+    const [role, setRole] = useState("");
+    const navigate = useNavigate()
 
 
     useEffect(() => {
@@ -22,6 +24,13 @@ export function UpdateBorrowing() {
             setStatus(data.status)
             console.log(data)
         }
+
+        const pipop = async () => {
+            const hasil = await  localStorage.getItem("role")
+        setRole(hasil)
+        }
+        pipop()
+        
         dapetData()
     }, [])
 
@@ -32,6 +41,7 @@ export function UpdateBorrowing() {
 
         const hasil = await updateBorrowing(ID_peminjaman, nama, judul_buku, tanggal_peminjaman, tanggal_pengembalian, status);
         console.log(hasil);
+        navigate('/borrowing')
 
         // Optionally, you can reset the form fields after submission
         // setJudul_buku("");
@@ -40,7 +50,7 @@ export function UpdateBorrowing() {
         // setTahun_terbit("");
         // setStock_buku("");
     };
-
+    if (role!="admin")return   <h1>bukan admin</h1>
     return (
         <>
             <form onSubmit={handleSubmit}>

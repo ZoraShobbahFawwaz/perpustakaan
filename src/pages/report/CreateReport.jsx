@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"
 import { createReport } from "../../api";
 import "bootstrap/dist/css/bootstrap.min.css"
 import daftar from "../../asset/daftar.jpg"
@@ -6,20 +7,23 @@ import daftar from "../../asset/daftar.jpg"
 export function CreateReport() {
     const [bulan, setBulan] = useState("");
     const [buku_terlaris, setBuku_terlaris] = useState("");
-    const [denda, setDenda] = useState("");
+    const [total_denda, setTotal_denda] = useState("");
+    const navigate = useNavigate()
 
     const handleSubmit = async (ev) => {
         ev.preventDefault();
 
         // Add validation logic here if needed
 
-        const hasil = await createReport(bulan, buku_terlaris, denda);
+        const hasil = await createReport( bulan, buku_terlaris, total_denda);
         console.log(hasil);
 
         // Optionally, you can reset the form fields after submission
         setBulan("");
         setBuku_terlaris("");
-        setDenda("");
+        setTotal_denda("");
+
+        navigate('/report')
 
     };
 
@@ -52,7 +56,7 @@ export function CreateReport() {
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">Denda Terkumpul</label>
-                                            <input type="text" onChange={ev => setDenda(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                            <input type="text" onChange={ev => setTotal_denda(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>

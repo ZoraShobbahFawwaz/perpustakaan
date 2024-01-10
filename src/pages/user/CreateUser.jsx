@@ -63,7 +63,7 @@ export function CreateUser() {
                                         <input onChange={ev => setJenis_kelamin(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">No HP</label>
+                                        <label for="exampleInputEmail1" class="form-label">No hp</label>
                                         <input onChange={ev => setNoHp(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>

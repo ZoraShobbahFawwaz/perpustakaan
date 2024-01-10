@@ -52,7 +52,6 @@ export function BookUser() {
                             <td>{penerbit}</td>
                             <td>{tahun_terbit}</td>
                             <td>{stock_buku}</td>
-                            {/* <td><form onSubmit={() => pinjam(bookID)} ><button type="submit" class="btn btn-danger">pinjamm</button></form></td> */}
                             <td><NavLink to={"/borrowing/create"}>
                                 <button type="submit" className="btn btn-warning">Pinjamm</button>
                                 </NavLink>

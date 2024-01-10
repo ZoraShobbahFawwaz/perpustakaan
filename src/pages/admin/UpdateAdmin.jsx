@@ -10,7 +10,7 @@ export function UpdateAdmin() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [np, setNp] = useState('')
-    const [noHp, setNoHp] = useState('')
+    const [no_hp, setNoHp] = useState('')
 
     useEffect(() => {
         const dapetData = async () => {
@@ -28,7 +28,7 @@ export function UpdateAdmin() {
     const handleSubmit = async (ev) => {
         ev.preventDefault()
         // console.log("password", password)
-        const hasil = await updateAdmin(adminID, nama, username, password, np, noHp)
+        const hasil = await updateAdmin(adminID, nama, username, password, np, no_hp)
         console.log(hasil)
     }
 
@@ -68,7 +68,7 @@ export function UpdateAdmin() {
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">No HP</label>
-                                        <input value={noHp} onChange={ev => setNoHp(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                        <input value={no_hp} onChange={ev => setNoHp(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>

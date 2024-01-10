@@ -7,11 +7,12 @@ export const login = (username, password) => {
         .post(`${url}/auth/login`, { username, password })
         .then(response => response.data)
         .catch(error => error)
+
 }
 //buat admin
-export const createAdmin = (  nama, username, password, np, no_hp,role) => {
+export const createAdmin = (nama, username, password, np, no_hp, role) => {
     return axios
-        .post(`${url}/admin/create`, { nama, username, password,np, no_hp,role })
+        .post(`${url}/admin/create`, { nama, username, password, np, no_hp, role })
         .catch(error => error)
         .then(response => response.data)
 }
@@ -25,7 +26,7 @@ export const getAlladmin = () => {
 }
 export const updateAdmin = (adminID, nama, username, password, np, no_hp) => {
     return axios
-        .patch(`${url}/user/${adminID}`, { adminID, nama, username, password, np, no_hp })
+        .patch(`${url}/admin/${adminID}`, { nama, username, password, np, no_hp })
         .then(response => response.data)
         .catch(error => error)
 }
@@ -110,11 +111,12 @@ export const createBook = (judul_buku, pengarang, penerbit, tahun_terbit, stock_
         .catch(error => error)
 }
 
-export const updateBook = (idBuku) => {
+//update buku
+export const updateBook = (bookID, judul_buku, pengarang, penerbit, tahun_terbit, stock_buku) => {
     return axios
-        .patch(`${url}/books/${idBuku}`)
-        .then(response => console.log(response))
-        .catch(err => console.log(err))
+        .patch(`${url}/books/${bookID}`, { judul_buku, pengarang, penerbit, tahun_terbit, stock_buku })
+        .then(response => response.data)
+        .catch(error => error)
 }
 export const deleteBuku = (idBuku) => {
     return axios
@@ -132,24 +134,80 @@ export const getAllborrowing = () => {
 }
 export const createBorrowing = (nama, judul_buku, tanggal_peminjaman, tanggal_pengembalian, status) => {
     return axios
-        .post(`${url}/borrowing/create`, { nama, judul_buku, tanggal_peminjaman, tanggal_pengembalian, status })
+        .post(`${url}/borrowing_book`, { nama, judul_buku, tanggal_peminjaman, tanggal_pengembalian, status })
         .then(response => response.data)
         .catch(error => error)
 }
+    export const deleteBorrowing = (idBorrowing) => {
+        return axios
+            .delete(`${url}/borrowing_book/${idBorrowing}`)
+            .then(response => console.log(response))
+            .catch(err => console.log(err))
+}
+export const updateBorrowing = (ID_Peminjaman,nama, judul_buku,tanggal_peminjaman,tanggal_pengembalian,status ) => {
+    return axios
+        .patch(`${url}/borrowing_book/${ID_Peminjaman}`, { nama,judul_buku,tanggal_peminjaman,tanggal_pengembalian,status})
+        .then(response => response.data)
+        .catch(error => error)
+}
+export const getOneByIDpeminjaman = (ID_peminjaman) => {
+    return axios
+        .get(`${url}/borrowing_book/${ID_peminjaman}`)
+        .then(reponse => reponse.data)
+        .catch(error => error)
+}
+    //pengembalian
+
 export const getAllpengembalian = () => {
     return axios
         .get(`${url}/pengembalian`)
         .then(response => response.data)
         .catch(error => error)
 }
+export const createPengembalian = (nama, judul_buku, tanggal_peminjaman, tanggal_pengembalian, status, denda) => {
+    return axios
+        .post(`${url}/pengembalian`, { nama, judul_buku, tanggal_peminjaman, tanggal_pengembalian, status, denda })
+        .then(response => response.data)
+        .catch(error => error)
+}
+export const deletePengembalian = (ID_Pengembalian) => {
+    return axios
+        .delete(`${url}/pengembalian/${ID_Pengembalian}`)
+        .then(response => console.log(response))
+        .catch(err => console.log(err))
+}
+export const getOneByIDpengembalian = (ID_pengembalian) => {
+    return axios
+        .get(`${url}/pengembalian/${ID_pengembalian}`)
+        .then(reponse => reponse.data)
+        .catch(error => error)
+}
 
+export const updatePengembalian = (ID_Pengembalian, nama, judul_buku, tanggal_peminjaman, tanggal_pengembalian, status, denda) => {
+    return axios
+        .patch(`${url}/pengembalian/${ID_Pengembalian}`, { nama, judul_buku, tanggal_peminjaman, tanggal_pengembalian, status, denda })
+        .then(response => response.data)
+        .catch(error => error)
+}
+//report
 export const getAllreport = () => {
     return axios
         .get(`${url}/report`)
         .then(response => response.data)
         .catch(error => error)
 }
-
+export const updateReport = (reportID, bulan, buku_terlaris, total_denda) => {
+    return axios
+        .patch(`${url}/report/${reportID}`, { bulan, buku_terlaris, total_denda })
+        .then(response => response.data)
+        .catch(error => error)
+}
+export const getOneByreportID = (reportID) => {
+    return axios
+        .get(`${url}/report/${reportID}`)
+        .then(reponse => reponse.data)
+        .catch(error => error)
+}
 export const createReport = (bulan, buku_terlaris, total_denda) => {
     return axios
         .post(`${url}/report`, { bulan, buku_terlaris, total_denda })
@@ -157,10 +215,9 @@ export const createReport = (bulan, buku_terlaris, total_denda) => {
         .catch(error => error)
 
 }
-
-export const createPengembalian = (nama, judul_buku, tanggal_peminjaman, tanggal_pengembalian, status) => {
+export const deleteReport = (reportID) => {
     return axios
-        .post(`${url}/pengembalian`, { nama, judul_buku, tanggal_peminjaman, tanggal_pengembalian, status })
-        .then(response => response.data)
-        .catch(error => error)
+        .delete(`${url}/report/${reportID}`)
+        .then(response => console.log(response))
+        .catch(err => console.log(err))
 }

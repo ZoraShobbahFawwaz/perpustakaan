@@ -8,12 +8,12 @@ export function CreateAdmin() {
     const [nama, setNama] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [noHp, setNoHp] = useState('')
     const [np, setNp] = useState('')
+    const [no_hp, setNo_hp] = useState('')
 
     const handleSubmit = async (ev) => {
         ev.preventDefault()
-        const hasil = await createAdmin( nama, username, password, np, noHp,)
+        const hasil = await createAdmin( nama, username, password, np, no_hp,)
         console.log(hasil)
     }
 
@@ -53,7 +53,7 @@ export function CreateAdmin() {
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">no hp</label>
-                                        <input onChange={ev => setNoHp(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                        <input onChange={ev => setNo_hp(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>

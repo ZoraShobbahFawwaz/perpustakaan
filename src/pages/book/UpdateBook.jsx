@@ -18,7 +18,7 @@ export function UpdateBook() {
             setPengarang(data.pengarang)
             setPenerbit(data.penerbit)
             setTahun_terbit(data.tahun_terbit)
-            setStock_buku(data.Stock_buku)
+            setStock_buku(data.stock_buku)
             console.log(data)
         }
         dapetData()

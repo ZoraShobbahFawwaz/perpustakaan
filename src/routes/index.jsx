@@ -17,20 +17,22 @@ import { CreateAdmin } from "../pages/admin/CreateAdmin"
 import { AdminPage } from "../pages/admin/AdminPage"
 import { AdminHomePage } from "../pages/AdminHomePage"
 import { BookUser } from "../pages/book/BookUser"
-import { UpdateUser} from "../pages/user/UpdateUser"
+import { UpdateUser } from "../pages/user/UpdateUser"
 import { UpdateAdmin } from "../pages/admin/UpdateAdmin"
-
+import { UpdatePengembalian } from "../pages/pengembalian/UpdatePengembalian"
+import { UpdateReport } from "../pages/report/UpdateReport"
+import { UpdateBorrowing } from "../pages/borrowing/UpdateBorrowing"
 
 export const router = createBrowserRouter([
+    //login
+    {
+        path: '/login',
+        element: <LoginForm />
+    },
     //tampilan awal
     {
         path: '/',
         element: <BookRentalLandingPage />
-    },
-    //Homepage
-    {
-        path: '/userhomepage',
-        element: < UserHomePage/>
     },
     //admin
     {
@@ -41,20 +43,27 @@ export const router = createBrowserRouter([
         path: '/admin/update/:adminID',
         element: <UpdateAdmin />
     },
+    {
+        path: '/admin/create',
+        element: <CreateAdmin />
+    },
+    {
+        path: '/adminhomepage',
+        element: <AdminHomePage />
+    },
     //user
+    {
+        path: '/userhomepage',
+        element: < UserHomePage />
+    },
     {
         path: '/create/user',
         element: <CreateUser />
     },
     {
-        path: '/login',
-        element: <LoginForm />
-    },
-    {
         path: '/user',
         element: <UserPage />
     },
-    //updte user
     {
         path: '/user/update/:userID',
         element: <UpdateUser />
@@ -85,11 +94,23 @@ export const router = createBrowserRouter([
         path: '/borrowing/create',
         element: <AddBorrowing />
     },
-   
+    {
+        path: '/borrowing/update/:ID_peminjaman',
+        element: <UpdateBorrowing />
+    },
+
     //pengembalian
     {
         path: '/pengembalian',
         element: <PengembalianPage />
+    },
+    {
+        path: '/pengembalian/update/:ID_pengembalian',
+        element: <UpdatePengembalian />
+    },
+    {
+        path: '/pengembalian/create',
+        element: <CreatePengembalian />
     },
     //report
     {
@@ -101,19 +122,10 @@ export const router = createBrowserRouter([
         element: <CreateReport />
     },
     {
-        path: '/updatebook',
-        element: <UpdateBook />
+        path: '/report/update/:reportID',
+        element: <UpdateReport />
     },
-    {
-        path: '/pengembalian/create',
-        element: <CreatePengembalian />
-    },
-    {
-         path: '/admin/create',
-         element: <CreateAdmin />
-    },
-    {
-        path: '/adminhomepage',
-        element: <AdminHomePage />
-    },
+
+
+
 ])

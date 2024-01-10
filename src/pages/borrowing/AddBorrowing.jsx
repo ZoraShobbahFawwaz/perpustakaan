@@ -45,7 +45,7 @@ export function AddBorrowing() {
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">status</label>
-                    <input type="password" onChange={ev => setStatus(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                    <input type="text" onChange={ev => setStatus(ev.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

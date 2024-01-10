@@ -25,27 +25,21 @@ export function BookPage() {
 
     if (!books) return <p>Still loading</p>;
 
-    // const fullBackgroundStyle = {
-    //     backgroundColor: 'green',
-    //     backgroundSize: 'cover',
-    //     backgroundPosition: 'center',
-    //     height: '100vh', // Set the height to 100% of the viewport height
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    //     // You can add more styles as needed
-    // };
-
     return (
             <header>
 
                 <NavLink to={"/addbook"}>
                     <button type="Submit" className="btn btn-dark">Tambahkan</button>
                 </NavLink>
+                <NavLink to={"/"}>
+                    <button type="Submit" className="btn btn-dark">LogOut</button>
+                </NavLink>
 
                 <table className="table" >
                     <thead>
                         <tr>
                             <th className="table-danger" scope="col">No</th>
+                            <th className="table-danger" scope="col">ID Buku</th>
                             <th className="table-danger" scope="col">judul_buku</th>
                             <th className="table-danger" scope="col">pengarang</th>
                             <th className="table-danger" scope="col">penerbit</th>
@@ -58,13 +52,14 @@ export function BookPage() {
                         {books.map(({ bookID, judul_buku, pengarang, penerbit, tahun_terbit, stock_buku }, index) => (
                             <tr key={index}>
                                 <th scope="row">{index + 1}</th>
+                                <td className="table-light">{bookID}</td>
                                 <td className="table-light">{judul_buku}</td>
                                 <td className="table-light">{pengarang}</td>
                                 <td className="table-light">{penerbit}</td>
                                 <td className="table-light">{tahun_terbit}</td>
                                 <td className="table-light">{stock_buku}</td>
                                 <td><form onSubmit={() => deleteBukuBuku(bookID)} ><button type="submit" class="btn btn-danger">Delete</button></form></td>
-                                <td><NavLink to={"/updatebook"}>
+                                <td><NavLink to={"/book/update/id"}>
                                     <button type="submit" className="btn btn-dark">Update</button>
                                 </NavLink>
                                 </td>

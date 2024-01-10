@@ -26,11 +26,15 @@ export function UserPage() {
             <NavLink to={"/create/user"}>
                 <button type="Submit" className="btn btn-dark">Tambahkan</button>
             </NavLink>
+            <NavLink to={"/"}>
+                <button type="Submit" className="btn btn-success">LogOut</button>
+            </NavLink>
 
             <table className="table">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
+                        <th scope="col">No ID </th>
                         <th scope="col">Nama</th>
                         <th scope="col">Email</th>
                         <th scope="col">Username</th>
@@ -42,8 +46,9 @@ export function UserPage() {
                 </thead>
                 <tbody>
                     {
-                        users.map(({ email, nama, jenis_kelamin, nim, password, username, no_hp, userID }, index) => (<tr>
+                        users.map(({ email, nama, jenis_kelamin, nim, username, no_hp, userID }, index) => (<tr>
                             <th scope="row">{index + 1}</th>
+                            <td>{userID}</td>
                             <td>{nama}</td>
                             <td>{email}</td>
                             <td>{username}</td>

@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react"
-import { login } from "../api"
+import { getAllUser, login } from "../api"
 
 export const AtuhKontex = createContext()
 
@@ -20,15 +20,16 @@ export function AtuhKontex(children) {
         setIsReady(true)
     }, [])
 
-    async function ikiLogin(username, password) {
+    async function signIn(username, password) {
         const hasil = await login(username, password)
     }
+    return (getAllUser)
 
-    return (
-        <>
-            {children}
-        </>
-    )
+    //return (
+       // <>
+       // {children}
+       // </>
+   // )
 }
 
 
